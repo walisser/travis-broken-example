@@ -1,6 +1,15 @@
-language: php
-php:
-  - 5.5
-  - 5.4
-  - hhvm
-script: phpunit Test.php
+language: cpp
+
+apt:
+  sources:
+      - ubuntu-toolchain-r-test
+  packages:
+      - wine
+      
+before_install:
+  - https://github.com/mxe/mxe.git
+  - cd mxe && make wxwidgets libsndfile ogg vorbis expat cmake
+  - export PATH=~/mxe/usr/bin:$PATH
+  - i686-w64-mingw32.static-g++ -v
+script:
+  - i686-w64-mingw32.static-g++ -v -o test test.cpp && wine ./test.exe
