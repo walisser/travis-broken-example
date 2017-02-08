@@ -3,7 +3,7 @@ language: cpp
 before_install:
   - cat /proc/cpuinfo
   - cat /etc/lsb-release
-  - sudo apt-add-repository "deb http://pkg.mxe.cc/repos/apt/debian wheezy main"
+  - sudo apt-add-repository "deb http://pkg.mxe.cc/repos/apt/debian jessie main"
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update -qq
   - sudo apt-get install -y mxe-i686-w64-mingw32.static-gcc
