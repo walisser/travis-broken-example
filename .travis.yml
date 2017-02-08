@@ -4,7 +4,7 @@ before_install:
   - echo XXXXXX Before Install XXXXXX
   - cat /proc/cpuinfo
   - sudo apt-get update -qq
-  - sudo apt-get install autopoint libtoolize gperf 7za wine
+  - sudo apt-get install autopoint libtool gperf p7zip-full wine
   
 before_script:
   - echo XXXXXX After Script XXXXX
