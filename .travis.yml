@@ -1,13 +1,12 @@
 language: cpp
       
 before_install:
-  - echo XXXXXX Before Install XXXXXX
   - cat /proc/cpuinfo
+  - cat /etc/lsb-release
   - sudo apt-get update -qq
-  - sudo apt-get install autopoint libtool gperf p7zip-full wine
+  - sudo apt-get install autopoint libtool intltool gperf p7zip-full wine
   
 before_script:
-  - echo XXXXXX After Script XXXXX
   - git clone https://github.com/mxe/mxe
   - cd mxe && make wxwidgets libsndfile ogg vorbis expat cmake
   - export PATH=~/mxe/usr/bin:$PATH
