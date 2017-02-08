@@ -11,9 +11,13 @@ apt:
       - wine
       
 before_install:
+  - sudo apt-get update -qq
+  
+before_script:
   - git clone https://github.com/mxe/mxe
   - cd mxe && make wxwidgets libsndfile ogg vorbis expat cmake
   - export PATH=~/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
+
 script:
   - i686-w64-mingw32.static-g++ -v -o test test.cpp && wine ./test.exe
