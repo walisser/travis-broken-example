@@ -1,19 +1,13 @@
 language: cpp
-
-apt:
-  sources:
-      - ubuntu-toolchain-r-test
-  packages:
-      - autopoint
-      - libtoolize
-      - gperf
-      - 7za
-      - wine
       
 before_install:
+  - echo XXXXXX Before Install XXXXXX
+  - cat /proc/cpuinfo
   - sudo apt-get update -qq
+  - sudo apt-get install autopoint libtoolize gperf 7za wine
   
 before_script:
+  - echo XXXXXX After Script XXXXX
   - git clone https://github.com/mxe/mxe
   - cd mxe && make wxwidgets libsndfile ogg vorbis expat cmake
   - export PATH=~/mxe/usr/bin:$PATH
