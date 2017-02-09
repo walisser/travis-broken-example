@@ -11,8 +11,6 @@ before_install:
 before_script:
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
-  # disable wine-gecko installer prompt
-  - export WINEDLLOVERRIDES="mscoree,mshtml="
   # need X server to get around wine stuff
   - sudo Xvfb :3 &
   - export DISPLAY=:3
