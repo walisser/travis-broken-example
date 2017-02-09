@@ -22,9 +22,8 @@ before_script:
   - i686-w64-mingw32.static-g++ -v
   - git clone https://github.com/audacity/audacity
   - (cd audacity && git remote add pr161 https://github.com/walisser/audacity && git fetch pr161 && git merge pr161/crosscompile)
-  - (cd audacity && CXXFLAGS="-w -std=gnu++11" ./configure --host=i686-w64-mingw32.static --with-lib-preference='system local' --enable-openmp)
-  - (cd audacity && CXXFLAGS="-w -std=gnu++11" ./configure --host=i686-w64-mingw32.static --with-lib-preference='system local' --enable-openmp)
-  - (cd audacity && make -j2)
+  - (cd audacity && CXXFLAGS="-w -std=gnu++11" ./configure --host=i686-w64-mingw32.static --enable-openmp)
+  - (cd audacity && make -j2 )
   # need X server to get around wine stuff
   #- sudo Xvfb :3 &
   #- export DISPLAY=:3
