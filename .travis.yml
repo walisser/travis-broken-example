@@ -16,4 +16,6 @@ before_script:
   - export DISPLAY=:3
 
 script:
-  - i686-w64-mingw32.static-g++ -mconsole -o test.exe test.cpp && wine ./test.exe
+  - i686-w64-mingw32.static-g++ -mconsole -o test.exe test.cpp
+  - wine ./test.exe
+  - wine ./test.exe
