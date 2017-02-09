@@ -1,13 +1,5 @@
 language: cpp
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.9
-      - gcc-4.9
-            
 before_install:
   # travis is too slow to compile mxe
   # use precompiled mxe from http://pkg.mxe.cc
