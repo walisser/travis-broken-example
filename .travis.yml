@@ -9,6 +9,7 @@ before_install:
   - sudo apt-get install -y mxe-i686-w64-mingw32.static-gcc
   
 before_script:
+  - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
 
 script:
