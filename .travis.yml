@@ -20,9 +20,9 @@ before_install:
 before_script:
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
-  - git clone https://github.com/audacity/audacity
-  - (cd audacity && git remote add pr161 https://github.com/walisser/audacity && git fetch pr161 && git merge pr161/crosscompile)
-  - (cd audacity && CXXFLAGS="-w -std=gnu++11" ./configure --host=i686-w64-mingw32.static --enable-openmp)
+  - git clone --depth=50 https://github.com/audacity/audacity
+  - (cd audacity && git fetch origin +refs/pull/161/merge)
+  - (cd audacity && ./configure --host=i686-w64-mingw32.static --enable-openmp)
   - (cd audacity && make -j2 )
   # need X server to get around wine stuff
   #- sudo Xvfb :3 &
