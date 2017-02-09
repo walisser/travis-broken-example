@@ -13,4 +13,4 @@ before_script:
   - i686-w64-mingw32.static-g++ -v
 
 script:
-  - i686-w64-mingw32.static-g++ -v -o test.exe test.cpp && wine ./test.exe
+  - i686-w64-mingw32.static-g++ -mconsole -o test.exe test.cpp && wine ./test.exe
