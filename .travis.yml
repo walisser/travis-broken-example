@@ -6,16 +6,21 @@ before_install:
   - sudo sh -c 'echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" > /etc/apt/sources.list.d/mxeapt.list'
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update -qq
-  - sudo apt-get install -y mxe-i686-w64-mingw32.static-gcc xvfb wine
+  #- sudo apt-get install -y xvfb wine
+  - for pkg in gcc cmake expat ogg vorbis wxwidgets libsndfile; do sudo apt-get install -y mxe-i686-w64-mingw32.static-$pkg; done
   
 before_script:
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
+  - git clone https://github.com/audacity/audacity
+  - cd audacity && git remote add pr161 https://github.com/walisser/audacity && git fetch pr161 && git merge pr161/crosscompile
+  - cd audacity && ./configure --host=i686-w64-mingw32.static --with-lib-preference='system local' --enable-openmp
+  - cd audacity && ./configure --host=i686-w64-mingw32.static --with-lib-preference='system local' --enable-openmp
   # need X server to get around wine stuff
-  - sudo Xvfb :3 &
-  - export DISPLAY=:3
+  #- sudo Xvfb :3 &
+  #- export DISPLAY=:3
 
 script:
   - i686-w64-mingw32.static-g++ -mconsole -o test.exe test.cpp
-  - wine ./test.exe
-  - wine ./test.exe
+  #- wine ./test.exe
+  #- wine ./test.exe
