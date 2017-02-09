@@ -1,8 +1,8 @@
 language: cpp
 
 before_install:
-  - cat /proc/cpuinfo
-  - cat /etc/lsb-release
+  # travis is too slow to compile mxe
+  # use precompiled mxe from http://pkg.mxe.cc
   - sudo sh -c 'echo "deb http://pkg.mxe.cc/repos/apt/debian wheezy main" > /etc/apt/sources.list.d/mxeapt.list'
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update -qq
@@ -11,6 +11,8 @@ before_install:
 before_script:
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
+  # disable wine-gecko installer prompt
+  - export WINEDLLOVERRIDES="mscoree,mshtml="
 
 script:
   - i686-w64-mingw32.static-g++ -mconsole -o test.exe test.cpp && wine ./test.exe
