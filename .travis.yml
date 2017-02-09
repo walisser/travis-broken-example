@@ -21,7 +21,7 @@ before_script:
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
   - git clone --depth=50 https://github.com/audacity/audacity
-  - (cd audacity && git fetch origin +refs/pull/161/merge)
+  - (cd audacity && git fetch origin +refs/pull/161/merge && git checkout -qf FETCH_HEAD)
   - (cd audacity && ./configure --host=i686-w64-mingw32.static --enable-openmp)
   - (cd audacity && make -j2 )
   # need X server to get around wine stuff
