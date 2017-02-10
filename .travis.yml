@@ -7,7 +7,9 @@ before_install:
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update -qq
   #- sudo apt-get install -y xvfb wine
-  - for pkg in gcc cmake expat ogg vorbis wxwidgets libsndfile; do sudo apt-get install -y mxe-i686-w64-mingw32.static-$pkg; done
+  - host=i686-w64-mingw32.static
+  - pkgs=" gcc expat ogg vorbis wxwidgets libsndfile"
+  - sudo apt-get install -y ${pkgs// / mxe-$host-}
   
 before_script:
   # we want to use crosscompiler, but travis exports these by default
