@@ -1,5 +1,10 @@
 language: cpp
 
+env:
+  matrix:
+    - HOST=i686-w64-mingw32.static
+    - HOST=x86_64-w64-mingw32.static
+
 before_install:
   # travis is too slow to compile mxe
   # use precompiled mxe from http://pkg.mxe.cc
@@ -7,7 +12,6 @@ before_install:
   - sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D43A795B73B16ABE9643FE1AFD8FFF16DB45C6AB
   - sudo apt-get update -qq
   #- sudo apt-get install -y xvfb wine
-  - HOST=x86_64-w64-mingw32.static
   - PKG_PREFIX="mxe-${HOST//_/-}"
   - PKG_LIST=" gcc expat ogg vorbis wxwidgets libsndfile"
   - sudo apt-get install -y ${PKG_LIST// / $PKG_PREFIX-}
