@@ -10,6 +10,9 @@ before_install:
   - for pkg in gcc cmake expat ogg vorbis wxwidgets libsndfile; do sudo apt-get install -y mxe-i686-w64-mingw32.static-$pkg; done
   
 before_script:
+  # we want to use crosscompiler, but travis exports these by default
+  - unset CC
+  - unset CXX
   - export PATH=/usr/lib/mxe/usr/bin:$PATH
   - i686-w64-mingw32.static-g++ -v
   - git clone --depth=50 https://github.com/audacity/audacity
